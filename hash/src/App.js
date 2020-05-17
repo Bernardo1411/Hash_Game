@@ -4,7 +4,7 @@ import Block from './components/block'
 import Header from './components/header'
 import Button from './components/button'
 
-const initialSate = {
+let initialSate = {
   blocks: [
     { value: '-', id: 0 }, { value: '-', id: 1 }, { value: '-', id: 2 }, { value: '-', id: 3 }, { value: '-', id: 4 }, { value: '-', id: 5 }, { value: '-', id: 6 }, { value: '-', id: 7 }, { value: '-', id: 8 },
   ],
@@ -33,16 +33,19 @@ export default class Hash extends Component {
 
   state = { ...initialSate }
 
-  changeState(name) {
+  changeState(id) {
     if (!this.state.end) {
+      const Listblocks = [...this.state.blocks]
       let val = null
       for (let i = 0; i < 9; i++) {
-        if (name.includes(i)) val = change(this.state[`value${i}`], this.state.status)
+        if (id === i) {
+          val = change(this.state.blocks[i].value, this.state.status)
+          Listblocks[i].value = val.value
+          this.setState({
+            blocks: Listblocks
+          }, e => this.endGame(this.state.blocks))
+        }
       }
-
-      this.setState({
-        value: val.value
-      }, e => this.endGame(this.state))
 
       this.setState({ status: val.stato })
 
@@ -50,9 +53,9 @@ export default class Hash extends Component {
   }
 
   endGame(actualState) {
-    const actualStatetArray = Object.values(actualState)
-    actualStatetArray.pop()
-    actualStatetArray.pop()
+    const actualStatetArray = actualState.map(block => {
+      return block.value
+    })
 
     let sum = 0
 
@@ -103,6 +106,12 @@ export default class Hash extends Component {
   }
 
   restart() {
+    initialSate = {
+      blocks: [
+        { value: '-', id: 0 }, { value: '-', id: 1 }, { value: '-', id: 2 }, { value: '-', id: 3 }, { value: '-', id: 4 }, { value: '-', id: 5 }, { value: '-', id: 6 }, { value: '-', id: 7 }, { value: '-', id: 8 },
+      ],
+      status: true, end: false
+    }
     this.setState({ ...initialSate })
   }
 
