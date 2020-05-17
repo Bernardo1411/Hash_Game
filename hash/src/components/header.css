@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    font-family: Pangolin-Regular;
+}
+.header>h1{
+    color: rgb(154, 91, 216);
+}

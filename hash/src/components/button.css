@@ -1,0 +1,12 @@
+@font-face{
+    src: url('../fonts/DMMono-Regular.ttf');
+    font-family: DMMono-Regular;
+}
+
+button{
+    background-color: #bb4433;
+    font-weight: bold;
+    font-size: 20px;
+    color: antiquewhite;
+    font-family: DMMono-Regular;
+}

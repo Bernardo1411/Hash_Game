@@ -1,0 +1,13 @@
+.block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #708ebbd5;
+    font-family: Pangolin-Regular;
+    font-size: 40px;
+    color: antiquewhite;
+}
+
+.block:hover{
+    background-color: #bb4433;
+}
